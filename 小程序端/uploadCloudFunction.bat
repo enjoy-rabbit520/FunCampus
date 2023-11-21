@@ -1,0 +1,1 @@
+"D:\WeChatProgram\微信web开发者工具\cli.bat" cloud functions deploy --e hjy-exam-4gz65vhhfec7daea --n quickstartFunctions --r --project "D:\desktop\FunCampus\FunCampus\小程序端" --report_first --report
