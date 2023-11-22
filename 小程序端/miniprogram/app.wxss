@@ -1,0 +1,5 @@
+page {
+  /* background-image: url("https://blog-img-store1.oss-cn-guangzhou.aliyuncs.com/img/image-20231122125111427.png"); */
+
+  background-color: #f3f3f3;
+}

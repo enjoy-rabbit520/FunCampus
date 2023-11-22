@@ -4,7 +4,54 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		
+    banner: ['../../images/banner1.jpg', '../../images/banner2.jpg', '../../images/banner3.jpg'],
+    indexConfig: [
+      {
+        icon: '../../images/kuaidi.png',
+        //text: 'Courier pick-up'
+        text: '快递代取'
+      },
+      {
+        icon: '../../images/daiji.png',
+        //text: 'Express delivery'
+        text: '快递代寄'
+      },
+      {
+        icon: '../../images/dayin.png',
+        //text: 'print'
+        text: '打印服务'
+      },
+      {
+        icon: '../../images/paotui.png',
+        //text: 'running errands'
+        text: '校园跑腿'
+      },
+      {
+        icon: '../../images/bangsong.png',
+        //text: 'deliver goods'
+        text: '帮我送'
+      },
+      {
+        icon: '../../images/youxi.png',
+        //text: 'play along'
+        text: '游戏陪玩'
+      },
+      {
+        icon: '../../images/daiti.png',
+        //text: 'replace'
+        text: '代替服务'
+      },
+      {
+        icon: '../../images/zujie.png',
+        //text: 'rent'
+        text: '租借服务'
+      },
+      {
+        icon: '../../images/qita.png',
+        //text: 'other'
+        text: '其他帮助'
+      }
+    ]
 	},
 
 	/**
