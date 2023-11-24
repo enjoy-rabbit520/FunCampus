@@ -6,9 +6,9 @@
 	</swiper>
 </view>
 
-<view class="notice">
+<view class="notice" bindtap="showNotice">
   <image src="../../images/notice.png"></image>
-  <text>关注公众号可享订单推送——接单员请务必添加本人qq: 2136585216</text>
+  <text>关注公众号可享订单推送通知——接单员请务必添加本人qq: 2136585216</text>
 </view>
 
 <view class="container">

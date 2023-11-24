@@ -49,16 +49,31 @@ Page({
       {
         icon: '../../images/qita.png',
         //text: 'other'
-        text: '其他帮助'
+        text: '其他服务'
       }
     ]
-	},
+  },
+  
+  /**
+   * 首页点击公告栏，弹出公告的隐藏信息
+   */
+  showNotice() {
+    wx.showModal({
+      title: '公告',
+      content: '关注公众号可享订单推送通知——接单员请务必添加本人qq: 2136585216'
+    })
+  },
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		
+		// wx.request({
+    //   url: 'http://localhost:3000/api/test',
+    //   success: (res) => {
+    //     console.log(res);
+    //   }
+    // })
 	},
 
 	/**
@@ -110,3 +125,4 @@ Page({
 		
 	}
 })
+

@@ -1,1 +1,28 @@
-/* pages/personal/personal.wxss */
+.info{
+	width: 80%;
+	background-color: #1067d1;
+	display: flex;
+	border-radius: 10rpx;
+	margin: 0 auto;
+	padding: 50rpx 40rpx;
+	align-items: center;
+}
+.info .avatar {
+	width: 100rpx;
+	height: 100rpx;
+	border-radius: 50%;
+}
+.info .name {
+	display: flex;
+	flex-direction: column;
+	color: #fff;
+	margin-left: 40rpx;
+}
+.info .name text:nth-child(2) {
+	margin-top: 25rpx;
+}
+.info .into {
+	width: 50rpx;
+	height: 50rpx;
+	 margin-left: auto;
+}
