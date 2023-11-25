@@ -1,2 +1,53 @@
 <!--pages/order/order.wxml-->
-<text>pages/order/order.wxml</text>
+<scroll-view scroll-x class="scroll_view">
+	<view class="tab">
+		<view class="tab_item {{ tabNow === index? 'select' : '' }}" wx:for="{{ tabList }}" data-id="{{ index }}" wx:key="index" bindtap="selectTab">
+			{{ item }}
+		</view>
+	</view>
+</scroll-view>
+
+<view wx:if="{{ tabNow === 0 }}" class="body">
+	<view class="tips">
+		向上拖动更新信息 ~~~
+	</view>
+	<view class="order" wx:for="{{ 4 }}" wx:key="index">
+		<view class="order_top">
+			<view class="top_left">
+				<image src="../../images/apply.png"></image>
+				<view class="name">
+					<text>租借服务</text>
+					<text>三天前</text>
+				</view>
+			</view>
+			<view class="top_right">
+				待帮助
+			</view>
+		</view>
+		<view class="order_content">
+			<view class="content">
+				来个女生，明天一起去看反贪风暴5跨年,看完各回各家，想吃和玩也可，你A时间我A钱。约定时间：00:01  租借时长：30分钟归还
+			</view>
+			<view class="address">
+				目的地：其它区域-其它区域-其它区域
+			</view>
+		</view>
+		<view class="order_bottom">
+			<view class="money">
+				金额 $2
+			</view>
+			<view class="accept">
+				接单
+			</view>
+		</view>
+	</view>
+</view>
+
+
+
+
+
+
+
+
+
