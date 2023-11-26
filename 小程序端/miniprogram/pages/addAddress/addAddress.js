@@ -5,7 +5,83 @@ Page({
    * 页面的初始数据
    */
   data: {
-    defaultAddress: true
+    defaultAddress: true,
+    build: '',
+    houseNumber: '',
+    name: '',
+    phone: '',
+    isEdit: false,
+    editNow: false,
+    editIndex: 0,
+  },
+
+  saveAddress() {
+    const {
+      build,
+      houseNumber,
+      name,
+      phone,
+      defaultAddress,
+      isEdit,
+      editNow,
+      index,
+    } = this.data;
+    let address = wx.getStorageSync('address');
+    if(!isEdit && defaultAddress && address) {
+      for(let i = 0; i < address.length; i++) {
+        if(address[i].defaultAddress) {
+          wx.showToast({
+            icon: 'none',
+            title: '已存在默认地址! ',
+          })
+          return;
+        }
+      }
+    }
+    const form = {
+      build,
+          houseNumber,
+          name,
+          phone,
+          defalutAddress,
+    };
+    if (!address) {
+      address = [form];
+    } else {
+      if (editNow) {
+          address[Number(index)] = form;
+      } else {
+          address.push(form);
+      }
+    }
+    wx.setStorageSync('address', address);
+    wx.navigateBack({
+      delta: 3
+  })
+  },
+
+  handleChangeSwitch(e) {
+    this.setData({
+        defalutAddress: e.detail.value
+    })
+  },
+
+  getPhone(e) {
+    this.setData({
+        phone: e.detail.value
+    })
+  },
+
+  getName(e) {
+    this.setData({
+        name: e.detail.value
+    })
+  },
+
+  getHouseNumber(e) {
+    this.setData({
+        houseNumber: e.detail.value
+    })
   },
 
   selectBuild() {

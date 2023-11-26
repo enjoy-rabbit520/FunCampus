@@ -12,7 +12,7 @@
     <image wx:if="{{ hasUserInfo }}" class="into" src="../../images/dayu.png"></image>
 </view>
 
-<view class="cell mt">
+<view class="cell mt" bindtap="applyOrder">
     <view class="cellLeft">
         <image src="../../images/apply.png"></image>
         <text>我要接单</text>
@@ -24,7 +24,7 @@
     <view class="tips">
         发现问题请点击微信客服复制到微信添加好友，为你解决
     </view>
-    <view class="cell">
+    <view class="cell" bindtap="getWXCustomer">
         <view class="cellLeft">
             <image src="../../images/wx.png"></image>
             <text>微信客服</text>
@@ -32,7 +32,7 @@
         <text class="cellRight">></text>
     </view>
 
-    <view class="cell">
+    <view class="cell" open-type="contact">
         <view class="cellLeft">
             <image src="../../images/myLogo.png"></image>
             <text>官方客服</text>
@@ -42,14 +42,14 @@
 </view>
 
 <view class="other mt">
-    <view class="cell">
+    <view class="cell" bindtap="toAbout">
         <view class="cellLeft">
             <image src="../../images/about.png"></image>
             <text>关于我们</text>
         </view>
         <text class="cellRight">></text>
     </view>
-    <view class="cell">
+    <view class="cell" open-type="contact">
         <view class="cellLeft">
             <image src="../../images/advice.png"></image>
             <text>投诉建议</text>

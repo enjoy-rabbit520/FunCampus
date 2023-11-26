@@ -10,6 +10,29 @@ Page({
         canIUseGetUserProfile: false,
     },       
 
+    applyOrder() {
+      wx.navigateTo({
+        url: '../applyOrder/applyOrder',
+      })
+    },
+
+    toAbout() {
+      wx.navigateTo({
+        url: '../aboutAs/aboutAs',
+      })
+    },
+
+    getWXCustomer() {
+      wx.setClipboardData({
+        data: '15218253371',
+        success: () => {
+          wx.showToast({
+            title: '复制微信成功',
+          })
+        }
+      })
+    },
+
     updateInfo() {
       if(this.data.hasUserInfo) {
         wx.navigateTo({
@@ -18,7 +41,18 @@ Page({
       }
     },
 
-    
+    getPhoneNumber(e) {
+      wx.cloud.callFunction({
+        name: 'getUserPhone',
+        data: {
+          cloudID: e.detail.cloudID,
+        },
+        // 云函数执行成功后，才会执行
+        success: (res) => {
+          wx.setStorageSync('phone', res.result.list[0].data.phoneNumber);
+        },
+      })
+    },    
     
     getUserProfile() {
         wx.getUserProfile({
@@ -53,7 +87,6 @@ Page({
             })
         }
         const userInfo = wx.getStorageSync('userInfo');
-        console.log(userInfo, !!userInfo);
         this.setData({
             hasUserInfo: !!userInfo,
             userInfo: userInfo,

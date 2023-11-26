@@ -16,7 +16,12 @@
     "pages/helpMeGive/helpMeGive",
     "pages/replaceMe/replaceMe",
     "pages/otherHelp/otherHelp",
-    "pages/updateInfo/updateIinfo"
+    "pages/updateInfo/updateIinfo",
+    "pages/aboutAs/aboutAs",
+    "pages/applyOrder/applyOrder",
+    "pages/agreement/agreement",
+    "components/myButton/myButton",
+    "components/myModal/myModal"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

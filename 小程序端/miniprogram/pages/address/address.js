@@ -5,8 +5,32 @@ Page({
    * 页面的初始数据
    */
   data: {
-    address: [],
-    url: ''
+    address: []
+  },
+
+  edit(e) {
+    const index = e.currentTarget.dataset.index;
+    const address = this.data.address[index];
+    wx.navigateTo({
+      url: '../addAddress/addAddress?address',
+    })
+  },
+
+  delete(e) {
+    const index = e.currentTarget.dataset.index;
+    const address = this.data.address;
+    address.splice(index, 1);
+    wx.setStorageSync('address', address);
+    wx.showToast({
+      title: '删除成功',
+    })
+    this.onLoad();
+  },
+
+  addAddress() {
+    wx.navigateTo({
+      url: '../addAddress/addAddress',
+    })
   },
 
   selectAddress(e) {
