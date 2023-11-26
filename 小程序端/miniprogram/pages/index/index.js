@@ -9,49 +9,65 @@ Page({
       {
         icon: '../../images/kuaidi.png',
         //text: 'Courier pick-up'
-        text: '快递代取'
+        text: '快递代取',
+        url: '../getExpress/getExpress'
       },
       {
         icon: '../../images/daiji.png',
         //text: 'Express delivery'
-        text: '快递代寄'
+        text: '快递代寄',
+        url: '../expressReplace/expressReplace'
       },
       {
         icon: '../../images/dayin.png',
         //text: 'print'
-        text: '打印服务'
+        text: '打印服务',
+        url: '../print/print'
       },
       {
         icon: '../../images/paotui.png',
         //text: 'running errands'
-        text: '校园跑腿'
+        text: '校园跑腿',
+        url: '../run/run'
       },
       {
         icon: '../../images/bangsong.png',
         //text: 'deliver goods'
-        text: '帮我送'
+        text: '帮我送',
+        url: '../helpMeGive/helpMeGive'
       },
       {
         icon: '../../images/youxi.png',
         //text: 'play along'
-        text: '游戏陪玩'
+        text: '游戏陪玩',
+        url: '../playGame/playGame'
       },
       {
         icon: '../../images/daiti.png',
         //text: 'replace'
-        text: '代替服务'
+        text: '代替服务',
+        url: '../replaceMe/replaceMe'
       },
       {
         icon: '../../images/zujie.png',
         //text: 'rent'
-        text: '租借服务'
+        text: '租借服务',
+        url: '../lease/lease'
       },
       {
         icon: '../../images/qita.png',
         //text: 'other'
-        text: '其他服务'
+        text: '其它服务',
+        url: '../otherHelp/otherHelp'
       }
     ]
+  },
+
+  toDetail(e) {
+    const url = e.currentTarget.dataset.url;
+    wx.navigateTo({
+      url,
+    })
   },
   
   /**
@@ -67,7 +83,7 @@ Page({
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function (options) {
+	onLoad: function(options) {
 		// wx.request({
     //   url: 'http://localhost:3000/api/test',
     //   success: (res) => {

@@ -9,6 +9,16 @@ Page({
         hasUserInfo: false,
         canIUseGetUserProfile: false,
     },       
+
+    updateInfo() {
+      if(this.data.hasUserInfo) {
+        wx.navigateTo({
+          url: '../updateInfo/updateIinfo',
+        })
+      }
+    },
+
+    
     
     getUserProfile() {
         wx.getUserProfile({

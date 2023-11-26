@@ -2,7 +2,21 @@
   "pages": [
     "pages/index/index",
     "pages/order/order",
-    "pages/personal/personal"
+    "pages/personal/personal",
+    "pages/getExpress/getExpress",
+    "pages/address/address",
+    "pages/addAddress/addAddress",
+    "pages/selectBuild/selectBuild",
+    "pages/print/print",
+    "pages/run/run",
+    "pages/expressReplace/expressReplace",
+    "pages/expressBusiness/expressBusiness",
+    "pages/lease/lease",
+    "pages/playGame/playGame",
+    "pages/helpMeGive/helpMeGive",
+    "pages/replaceMe/replaceMe",
+    "pages/otherHelp/otherHelp",
+    "pages/updateInfo/updateIinfo"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

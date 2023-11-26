@@ -1,7 +1,7 @@
-<view class="info">
+<view class="info" bindtap="updateInfo">
     <image class="avatar" src="{{ hasUserInfo? userInfo.avatarUrl : '../../images/touxiang.png' }}"></image>
     <block wx:if="{{ !hasUserInfo }}">
-        <button wx:if="{{ canIUseGetUserProfile }}" bindtap="getUserProfile">点我授权</button>
+        <button open-type="getPhoneNumber"  bindgetphonenumber="getPhoneNumber" wx:if="{{ canIUseGetUserProfile }}" bindtap="getUserProfile">点我授权</button>
         <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo">点我授权</button>
     </block>
 

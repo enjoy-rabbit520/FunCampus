@@ -12,7 +12,7 @@
 </view>
 
 <view class="container">
-  <view class="body" wx:for="{{ indexConfig }}" wx:key="index">
+  <view class="body" wx:for="{{ indexConfig }}" wx:key="index" data-url="{{ item.url }}" bindtap="toDetail">
     <view class="circleBorder">
       <view class="icon">
       <image src="{{ item.icon }}"></image>

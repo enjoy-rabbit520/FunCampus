@@ -59,6 +59,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "getExpress",
+          "pathName": "pages/getExpress/getExpress",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

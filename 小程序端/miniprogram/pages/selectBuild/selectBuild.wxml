@@ -1,0 +1,28 @@
+<!--pages/selectBuild/selectBuild.wxml-->
+
+<scroll-view scroll-x class="scroll_view">
+    <view class="tab">
+        <view class="tab_item {{ tabNow === index ? 'select' : '' }}" wx:for="{{ tabList }}" data-id="{{ index }}"
+            wx:key="index" bindtap="selectTab">
+            {{ item }}
+        </view>
+    </view>
+</scroll-view>
+
+<view wx:if="{{ tabNow === 0 || tabNow === 1 || tabNow === 2 }}" class="body">
+    <view class="item" wx:for="{{ 6 }}" wx:key="index" bindtap="selectBuild" data-index="{{ index }}">
+        {{ index + 1 }} 号楼
+    </view>
+</view>
+<view wx:if="{{ tabNow === 3 || tabNow === 4 }}" class="body">
+    <view class="item" wx:for="{{ 18 }}" wx:key="index" bindtap="selectBuild" data-index="{{ index }}">
+        {{ index + 1 }} 号楼
+    </view>
+</view>
+<view wx:if="{{ tabNow === 5}}" class="body">
+    <view class="item" wx:for="{{ 4 }}" wx:key="index" bindtap="selectBuild" data-index="{{ index }}">
+        {{ index + 1 }} 饭
+    </view>
+</view>
+
+<view class="showAll">已显示全部</view>
