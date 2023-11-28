@@ -21,7 +21,9 @@
     "pages/applyOrder/applyOrder",
     "pages/agreement/agreement",
     "components/myButton/myButton",
-    "components/myModal/myModal"
+    "components/myModal/myModal",
+    "pages/receiveLoading/receiveLoading",
+    "pages/login/login"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

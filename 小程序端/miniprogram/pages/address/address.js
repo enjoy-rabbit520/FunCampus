@@ -34,14 +34,13 @@ Page({
   },
 
   selectAddress(e) {
-    const {
-      index
-    } = e.currentTarget.dataset;
-    const url = wx.getStorageSync('urlNow')
+    const { index } = e.currentTarget.dataset;
+    //const url = wx.getStorageSync('urlNow')
     const address = this.data.address[index];
-    wx.setStorageSync('addressNow', address);
+    //wx.setStorageSync('addressNow', address);
     wx.redirectTo({
-      url: `../${url}/${url}`,
+      //url: `../${url}/${url}`,
+      url: '../getExpress/getExpress?address=${JSON.stringify{address}}',
     })
   },
 

@@ -1,40 +1,25 @@
-<view class="bannerr">
-	<swiper indicator-dots="true" autoplay="true" class="banner_body">
-		<swiper-item wx:for="{{ banner }}" wx:key="index" class="banner_item"> 
-			<image src="{{ item }}" mode="widthFix"></image>
-		</swiper-item>
-	</swiper>
-</view>
+<view class="index">
+  <view class="bannerr">
+    <swiper indicator-dots="true" autoplay="true" class="banner_body">
+      <swiper-item wx:for="{{ banner }}" wx:key="index" class="banner_item"> 
+        <image src="{{ item }}" mode="widthFix"></image>
+      </swiper-item>
+    </swiper>
+  </view>
 
-<view class="notice" bindtap="showNotice">
-  <image src="../../images/notice.png"></image>
-  <text>关注公众号可享订单推送通知——接单员请务必添加本人qq: 2136585216</text>
-</view>
+  <view class="notice" bindtap="showNotice">
+    <image src="../../images/notice.png"></image>
+    <text>关注公众号可享订单推送通知——接单员请务必添加本人qq: 2136585216</text>
+  </view>
 
-<view class="container">
-  <view class="body" wx:for="{{ indexConfig }}" wx:key="index" data-url="{{ item.url }}" bindtap="toDetail">
-    <view class="circleBorder">
-      <view class="icon">
-      <image src="{{ item.icon }}"></image>
+  <view class="container">
+    <view class="body" wx:for="{{ indexConfig }}" wx:key="index" data-url="{{ item.url }}" bindtap="toDetail">
+      <view class="circleBorder">
+        <view class="icon">
+        <image src="{{ item.icon }}"></image>
+      </view>
+      </view>
+      <text class="text">{{ item.text }}</text>
     </view>
-    </view>
-    <text class="text">{{ item.text }}</text>
   </view>
 </view>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,6 +1,7 @@
 // pages/applyOrder/applyOrder.js
+import { getTimeNow } from '../../utils/index';
+const db = wx.cloud.database();
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -11,13 +12,13 @@ Page({
     modalContent: '1. 证件号指学生证上面的号码, 2. 相关证件正面指的是学生证正面, 3. 需要加急请点击微信客服添加好友加急申请!',
     name: '',
     userID: '',
-},
+  },
 
-submit() {
-  // 保存this指向，方便复用
-  const that = this.data;
-  // 提交信息
-  db.collection('orderReceive').add({
+  submit() {
+    // 保存this指向，方便复用
+    const that = this.data;
+    // 提交信息
+    db.collection('orderReceive').add({
       data: {
           name: that.name,
           userID: that.userID,
@@ -46,30 +47,30 @@ submit() {
       fail: (res) => {
           wx.showToast({
             icon: 'none',
-            title: '上传失败',
+            title: '审核失败',
           })
       }
   })
-},
+  },
 
-getName(e) {
+  getName(e) {
     this.setData({
         name: e.detail.value
     })
-},
-getUserID(e) {
+  },
+  getUserID(e) {
     this.setData({
         userID: e.detail.value
     })
-},
+  },
 
-toAgreement() {
+  toAgreement() {
     wx.navigateTo({
         url: '../agreement/agreement',
     })
-},
+  },
 
-getAdminWX() {
+  getAdminWX() {
     wx.setClipboardData({
         data: '18331092918',
         success: (res) => {
@@ -78,16 +79,16 @@ getAdminWX() {
             })
         }
     })
-},
+  },
 
 
-showTips() {
+  showTips() {
     this.setData({
         showTips: !this.data.showTips
     })
-},
+  },
 
-uploadImg() {
+  uploadImg() {
     wx.chooseImage({
         count: 1,
         sizeType: ['compressed', 'original'],

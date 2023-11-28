@@ -1,3 +1,7 @@
+.index{
+  background-color:lightskyblue;
+}
+
 .banner_body, .banner_item, .banner_item image {
   height: 350rpx;
   width: 100%;
