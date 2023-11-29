@@ -45,12 +45,13 @@ Page({
     updateInfo() {
       if(this.data.hasUserInfo) {
         wx.navigateTo({
-          url: '../updateInfo/updateIinfo',
+          url: '../updateInfo/updateInfo',
         })
       }
     },
 
     getPhoneNumber(e) {
+      console.log(e);
       wx.cloud.callFunction({
         name: 'getUserPhone',
         data: {
@@ -66,7 +67,7 @@ Page({
     getUserProfile() {
         console.log('hello');
         wx.getUserProfile({
-          desc: '获取你的基本信息',
+          desc: '获取用户信息',
           success: (res) => {
               this.setData({
                   userInfo: res.userInfo,

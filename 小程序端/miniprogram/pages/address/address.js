@@ -5,42 +5,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    address: []
-  },
-
-  edit(e) {
-    const index = e.currentTarget.dataset.index;
-    const address = this.data.address[index];
-    wx.navigateTo({
-      url: '../addAddress/addAddress?address',
-    })
-  },
-
-  delete(e) {
-    const index = e.currentTarget.dataset.index;
-    const address = this.data.address;
-    address.splice(index, 1);
-    wx.setStorageSync('address', address);
-    wx.showToast({
-      title: '删除成功',
-    })
-    this.onLoad();
-  },
-
-  addAddress() {
-    wx.navigateTo({
-      url: '../addAddress/addAddress',
-    })
+    address: [],
+    url: ''
   },
 
   selectAddress(e) {
-    const { index } = e.currentTarget.dataset;
-    //const url = wx.getStorageSync('urlNow')
+    const {
+      index
+    } = e.currentTarget.dataset;
+    const url = wx.getStorageSync('urlNow')
     const address = this.data.address[index];
-    //wx.setStorageSync('addressNow', address);
+    wx.setStorageSync('addressNow', address);
     wx.redirectTo({
-      //url: `../${url}/${url}`,
-      url: '../getExpress/getExpress?address=${JSON.stringify{address}}',
+      url: `../${url}/${url}`,
     })
   },
 
@@ -72,7 +49,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
+  onLoad: function (options) {
     const address = wx.getStorageSync('address');
     this.setData({
       address,
@@ -82,49 +59,50 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {
-
+  onShow: function () {
+    this.setData({
+      address: wx.getStorageSync('address')
+    })
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() {
-
+  onUnload: function () {
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {
+  onShareAppMessage: function () {
 
   }
 })

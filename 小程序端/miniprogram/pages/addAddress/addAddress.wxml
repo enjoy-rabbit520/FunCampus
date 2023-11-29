@@ -1,5 +1,3 @@
-<!--pages/addAddress/addAddress.wxml-->
-
 <view class="body">
     <view class="body_item">
         <view class="left">

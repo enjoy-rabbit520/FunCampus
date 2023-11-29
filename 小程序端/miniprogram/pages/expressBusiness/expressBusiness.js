@@ -5,14 +5,38 @@ Page({
    * 页面的初始数据
    */
   data: {
+      tabList: ['快递点'],
+      tabNow: 0,
+      businessList: ['中通快递', '申通快递', '圆通快递', '韵达快递', '邮政快递', '百世快递'],
+      url: '',
+  },
 
+  // 选择快递商家
+  selectBusiness(e) {
+    const { index } = e.currentTarget.dataset;
+    const { url } = this.data;
+    wx.redirectTo({
+      url: `../${url}/${url}?business=${this.data.businessList[index]}`,
+    })
+  },
+
+  // 记录选择的tab
+  selectTab(e) {
+    const id = e.currentTarget.dataset.id;
+    this.setData({
+      tabNow: id,
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    //console.log(options);
+    const { url } = options;
+    this.setData({
+      url
+    })
   },
 
   /**

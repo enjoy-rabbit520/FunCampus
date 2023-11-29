@@ -9,7 +9,7 @@ Page({
     userInfo: {},
     userIDImg: '',
     showTips: false,
-    modalContent: '1. 证件号指学生证上面的号码, 2. 相关证件正面指的是学生证正面, 3. 需要加急请点击微信客服添加好友加急申请!',
+    modalContent: '1. 相关证件正面指的是学生证正面, 2. 需要加急请点击微信客服添加好友加急申请!',
     name: '',
     userID: '',
   },
@@ -20,11 +20,17 @@ Page({
     // 提交信息
     db.collection('orderReceive').add({
       data: {
+          // 姓名
           name: that.name,
+          // 身份证号
           userID: that.userID,
+          // 证件图片
           userIDImg: that.userIDImg,
+          // 用户基本信息
           userInfo: that.userInfo,
+          // 认证状态
           state: '待审核',
+          // 申请时间
           time: getTimeNow(),
           allMoney: 0,
           allCount: 0,
