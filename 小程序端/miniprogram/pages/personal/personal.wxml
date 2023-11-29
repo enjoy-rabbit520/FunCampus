@@ -20,6 +20,7 @@
     <text class="cellRight">></text>
 </view>
 
+<!--
 <view class="cell mt" bindtap="login">
     <view class="cellLeft">
         <image src="../../images/login.png"></image>
@@ -27,6 +28,7 @@
     </view>
     <text class="cellRight">></text>
 </view>
+-->
 
 <view class="customerService mt">
     <view class="tips">
