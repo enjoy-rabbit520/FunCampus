@@ -101,7 +101,7 @@ Page({
           url: '../index/index',
         })
         wx.showToast({
-          title: '发布成功',
+          title: '发布成功，请耐心等待接单',
         })
       }
     })
