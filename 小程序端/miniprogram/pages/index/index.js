@@ -64,10 +64,18 @@ Page({
   },
 
   toDetail(e) {
+    const userInfo = wx.getStorageSync('userInfo');
     const url = e.currentTarget.dataset.url;
-    wx.navigateTo({
-      url,
-    })
+    if (userInfo) {
+      wx.navigateTo({
+        url,
+      })
+    } else {
+      wx.showToast({
+        icon: 'none',
+        title: '请前往个人中心登录',
+      })
+    }
   },
   
   /**
@@ -84,12 +92,18 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function(options) {
-		// wx.request({
-    //   url: 'http://localhost:3000/api/test',
-    //   success: (res) => {
-    //     console.log(res);
-    //   }
-    // })
+		const openid = wx.getStorageSync('openid');
+    if (!openid) {
+      wx.cloud.callFunction({
+        name: 'UserOpenId',
+        success: (res) => {
+          const {
+            openid
+          } = res.result;
+          wx.setStorageSync('openid', openid);
+        }
+      })
+    }
 	},
 
 	/**

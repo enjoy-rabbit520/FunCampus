@@ -5,7 +5,7 @@ cloud.init()
 
 const db = cloud.database();
 
-// 云函数入口函数
+// 云函数入口函数：更新接单状态
 exports.main = async (event, context) => {
   const { _id, allMoney, allCount, allOrder } = event;
   try {

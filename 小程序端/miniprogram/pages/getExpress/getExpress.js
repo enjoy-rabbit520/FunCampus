@@ -47,6 +47,7 @@ Page({
   },
 
 
+  //发布需求
   submit() {
     // 保存this指向
     const that = this.data;

@@ -1,3 +1,4 @@
+// 封装获取当前时间的函数
 // 获取当前时间
 export const getTimeNow = () => {
   let dateTime

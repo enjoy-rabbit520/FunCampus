@@ -7,6 +7,7 @@
             <text>></text>
         </view>
     </view>
+    
     <view class="item">
         <text>名字</text>
         <view class="right">

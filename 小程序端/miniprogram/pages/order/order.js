@@ -6,29 +6,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-      tabList: ['全部', '我的订单', '我的接单', '悬赏订单'],
-      tabNow: 0,
-      orderList: [],
-      myOrder: [],
-      rewardOrder: [],
-      helporder: [],
-      openid: '',
-      canReceive: false,
-      helpTotalNum: 0,
-      helpTotalMoney: 0
+    tabList: ['全部', '我的订单', '我的接单', '正在悬赏'],
+    tabNow: 0,
+    orderList: [],
+    myOrder: [],
+    rewardOrder: [],
+    helpOrder: [],
+    openid: '',
+    canReceive: false,
+    helpTotalNum: 0,
+    helpTotalMoeny: 0
   },
   selectTab(e) {
-    const { id } = e.currentTarget.dataset;
+    const {
+      id
+    } = e.currentTarget.dataset;
     this.setData({
       tabNow: id,
     })
-    if (id == 0){ // 全部订单
+    if (id === 0) {
       this.onLoad();
-    } else if (id == 1) { // 我的订单
+    } else if (id === 1) {
       this.getMyOrder();
-    } else if (id == 2) { // 我的接单
+    } else if (id === 2) {
       this.getMyHelpOrder();
-    } else if (id == 3) { // 悬赏订单
+    } else if (id === 3) {
       this.getRewardOrder();
     }
   },
@@ -64,6 +66,7 @@ Page({
 
   },
 
+  // 拨打电话
   callPhone(e) {
     const {
       phone
@@ -73,7 +76,7 @@ Page({
     })
   },
 
-  // 获取我帮助的订单信息 
+  // 获取我的接单信息 
   getMyHelpOrder() {
     wx.showLoading({
       title: '加载中',
@@ -98,7 +101,7 @@ Page({
 
   },
 
-  // 我帮助的订单单数总和
+  // 我的接单单数总和
   getHelpTotalNum() {
     db.collection('order').where({
       receivePerson: wx.getStorageSync('openid'),
@@ -113,7 +116,7 @@ Page({
     })
   },
 
-  // 我帮助的订单金额总和
+  // 我的接单金额总和
   getHelpTotalMoney() {
     const $ = db.command.aggregate;
     db.collection('order').aggregate().match({
@@ -202,8 +205,16 @@ Page({
         item
       } = e.currentTarget.dataset;
       const {
-        _id
+        _id,
+        _openid
       } = item;
+      if(_openid === wx.getStorageSync('openid')) {
+        wx.showToast({
+          icon: 'none',
+          title: '无法接单',
+        });
+        return;
+      } 
       wx.cloud.callFunction({
         name: 'updateReceive',
         data: {
@@ -395,6 +406,7 @@ Page({
           }
           item.info = this.formatInfo(item);
           item.stateColor = this.formatState(item.state);
+          console.log(item.stateColor);
         });
         this.setData({
           orderList: data,
@@ -436,44 +448,44 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {
+  onShow: function () {
     this.onLoad();
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom() {
+  onReachBottom: function () {
     wx.showLoading({
-      title: '刷新中',
+      title: '加载中',
     })
     let {
       orderList,
@@ -621,7 +633,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {
+  onShareAppMessage: function () {
 
   }
 })
