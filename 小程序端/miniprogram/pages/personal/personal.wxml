@@ -19,13 +19,23 @@
     <text class="cellRight">></text>
 </button>
 
+<<<<<<< HEAD
 <button class="cell mt" bindtap="orderReceiver" >
+=======
+<!--
+<view class="cell mt" bindtap="login">
+>>>>>>> 8fe29af9d3e00c5bb73fd2c9d989f2ef6ef36140
     <view class="cellLeft">
         <image src="../../images/check.png"></image>
         <text>审核接单申请</text>
     </view>
     <text class="cellRight">></text>
+<<<<<<< HEAD
 </button>
+=======
+</view>
+-->
+>>>>>>> 8fe29af9d3e00c5bb73fd2c9d989f2ef6ef36140
 
 <view class="customerService mt">
     <view class="tips">
@@ -63,5 +73,9 @@
         <text class="cellRight">></text>
     </button>
 </view>
+<<<<<<< HEAD
 
 <view class="version mt">当前版本: 1.0.0</view>
+=======
+<view class="version mt">当前版本：1.0.0</view>
+>>>>>>> 8fe29af9d3e00c5bb73fd2c9d989f2ef6ef36140
