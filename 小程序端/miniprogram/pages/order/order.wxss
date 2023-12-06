@@ -1,4 +1,6 @@
 .scroll_view {
+  position: sticky;
+  top: 0;
   background-color: rgb(255, 255, 255);
   white-space: nowrap;
 }
