@@ -15,6 +15,7 @@ Page({
       userID: '',
   },
 
+  // 点击申请接单逻辑
   submit() {
     // 保存this指向，方便复用
     const that = this.data;
@@ -31,6 +32,7 @@ Page({
             allCount: 0,
             allOrder: []
         },
+        // 函数执行成功逻辑
         success: (res) => {
             // 清空输入内容
             this.setData({
@@ -38,13 +40,16 @@ Page({
                 userID: '',
                 userIDImg: '',
             })
+            // 提示信息
             wx.showToast({
               title: '提交成功',
             })
+            // 路由跳转
             wx.navigateTo({
               url: '../receiveLoading/receiveLoading',
             })
         },
+        // 函数执行失败逻辑
         fail: (res) => {
             wx.showToast({
               icon: 'none',

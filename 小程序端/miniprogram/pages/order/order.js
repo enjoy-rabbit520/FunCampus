@@ -78,16 +78,19 @@ Page({
 
   // 获取我帮助的订单信息 
   getMyHelpOrder() {
+    // 优化用户交互体验：提示信息
     wx.showLoading({
       title: '加载中',
     })
+    // 保存数据
     db.collection('orderReceive').where({
       _openid: wx.getStorageSync('openid')
     }).get({
-      success: (res) => {
+      success: (res) => { // 云函数成功调用
         const {
           data
         } = res;
+        // 数据赋值
         this.setData({
           helpTotalMoeny: data[0].allMoney,
           helpTotalNum: data[0].allCount
@@ -637,6 +640,7 @@ Page({
         }
       })
     } else if (tabNow === 3) {
+      // 查询数据，并按时间倒序展示
       db.collection('order').orderBy('createTime', 'desc').skip(rewardOrder.length).where({
         state: '待帮助'
       }).get({
@@ -645,11 +649,13 @@ Page({
             const {
               data
             } = res;
+            // 遍历数据
             data.forEach(item => {
               if (item.name === "快递代取" && item.info.expressCode) {
                 item.expressCode = item.info.expressCode;
               }
               if (item.name === "快递代取" && item.info.codeImg) {
+                // 赋值取件码数据
                 item.codeImg = item.info.codeImg;
               }
               item.info = this.formatInfo(item);
@@ -657,6 +663,7 @@ Page({
               rewardOrder.push(item);
             });
             this.setData({
+              //赋值：正在悬赏的订单数据（这里是比较高级的写法）
               rewardOrder,
             })
           } else {

@@ -84,6 +84,14 @@ Fun校园服务
 >
 >   
 >
+> * 选择调试基础库为2.16.1（测试所有功能正常）
+>
+>   ![image-20231206141633445](https://blog-img-store1.oss-cn-guangzhou.aliyuncs.com/img/image-20231206141633445.png)
+>
+>   
+>
+> 
+>
 > * 打开app.js文件，更改云开发环境（env）为你自己的
 >
 >   ![image-20231129152933525](https://blog-img-store1.oss-cn-guangzhou.aliyuncs.com/img/image-20231129152933525.png)
@@ -99,8 +107,6 @@ Fun校园服务
 > * 将该目录下的云函数全部上传部署
 >
 >   ![image-20231129153454819](https://blog-img-store1.oss-cn-guangzhou.aliyuncs.com/img/image-20231129153454819.png)
->
-> 
 >
 > 
 >

@@ -77,15 +77,18 @@ Page({
         }
     },
 
+    //关于我们
     toAbout() {
+        //路由跳转
         wx.navigateTo({
             url: '../aboutAs/aboutAs',
         })
     },
 
+    // 复制微信号
     getWXCustomer() {
         wx.setClipboardData({
-            data: '18331092918',
+            data: '15218253371',
             success: () => {
                 wx.showToast({
                     title: '复制微信成功',
@@ -94,6 +97,7 @@ Page({
         })
     },
 
+    // 更新个人信息
     updateInfo() {
         if (this.data.hasUserInfo) {
             wx.navigateTo({
@@ -102,6 +106,7 @@ Page({
         }
     },
 
+    // 获取手机号
     getPhoneNumber(e) {
         wx.cloud.callFunction({
             name: 'getUserPhone',
@@ -118,20 +123,26 @@ Page({
         })
     },
 
+    // 获取用户授权
     getUserProfile() {
+        // 弹框
         wx.getUserProfile({
+            // 弹框内容
             desc: '获取用户信息',
+            // 函数执行成功逻辑
             success: (res) => {
+                // 赋值
                 this.setData({
                     userInfo: res.userInfo,
                     hasUserInfo: true
                 })
+                // 保存数据
                 wx.setStorageSync('userInfo', res.userInfo);
             }
         })
     },
 
-    // 老接口
+    // 老接口（这里做了一个兼容老版本）
     getUserInfo(e) {
         this.setData({
             userInfo: e.detail.userInfo,
