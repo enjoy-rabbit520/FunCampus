@@ -19,18 +19,21 @@
     <text class="cellRight">></text>
 </button>
 
+<view class=" customerService mt">
+    <view class="tips">
+        暂时开放该管理员功能，以便检查的同学演示
+    </view>
+</view>
+
 <button class="cell mt" bindtap="orderReceiver" >
     <view class="cellLeft">
         <image src="../../images/check.png"></image>
-        <text>审核接单申请</text>
+        <text>接单员申核</text>
     </view>
     <text class="cellRight">></text>
 </button>
 
 <view class="customerService mt">
-    <view class="tips">
-        问题请点击微信客服复制到微信添加好友说明
-    </view>
     <button class="cell" bindtap="getWXCustomer">
         <view class="cellLeft">
             <image src="../../images/wx.png"></image>
@@ -64,4 +67,4 @@
     </button>
 </view>
 
-<view class="version mt">当前版本: 1.0.0</view>
+<view class="version mt">当前版本: 1.2.2</view>

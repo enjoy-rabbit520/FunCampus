@@ -1,4 +1,3 @@
-<!--pages/expressBusiness/expressBusiness.wxml-->
 
 <scroll-view scroll-x class="scroll_view">
     <view class="tab">

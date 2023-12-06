@@ -15,22 +15,35 @@ Page({
       title: '加载中',
     })
     const { item: { _id }, name } = e.currentTarget.dataset;
-    db.collection('orderReceive').doc(_id).update({
+    // 调用云函数
+    wx.cloud.callFuncation({
+      name: 'toExamine',
       data: {
+        _id,
         state: name,
-        examinePerson: wx.getStorageSync('openid') 
+        examinePerson: wx.getStorageSync('openid')
       },
       success: (res) => {
         this.onLoad();
         wx.hideLoading();
       }
     })
+    // db.collection('orderReceive').doc(_id).update({
+    //   data: {
+    //     state: name,
+    //     examinePerson: wx.getStorageSync('openid') 
+    //   },
+    //   success: (res) => {
+    //     this.onLoad();
+    //     wx.hideLoading();
+    //   }
+    // })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad (options) {
+  onLoad: function (options) {
     db.collection('orderReceive').where({
       state: '待审核'
     }).get({

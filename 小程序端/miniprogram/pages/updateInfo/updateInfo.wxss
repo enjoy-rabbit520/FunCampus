@@ -1,4 +1,3 @@
-/* pages/updateInfo/updateIinfo.wxss */
 .info {
   background-color: #fff;
 }

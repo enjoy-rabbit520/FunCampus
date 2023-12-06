@@ -1,5 +1,5 @@
-/* components/myButton/myButton.wxss */
-.subminBtn {
+
+.submitBtn {
   width: 600rpx !important;
   background-color: #1067D1;
   padding: 20rpx 0;

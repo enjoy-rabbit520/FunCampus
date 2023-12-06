@@ -1,4 +1,6 @@
 // pages/print/print.js
+import { getTimeNow } from '../../utils/index';
+const db = wx.cloud.database();
 Page({
 
   /**
@@ -7,10 +9,11 @@ Page({
   data: {
     printImg: '',
     address: '',
+    userInfo: {},
     pageNum: null,
     remark: '',
-    isColorful: '',
-    isTwoSided: false,
+    colorPrint: false,
+    twoSided: false,
   },
 
   getTwoSided(e) {
@@ -96,34 +99,63 @@ Page({
   },
 
   getImg() {
-    wx.chooseImage({
+    // 实现文件的上传
+    wx.chooseMessageFile({
       count: 1,
-      sizeType: ['compressed', 'original'],
-      sourceType: ['album', 'camera'],
-      success: (res) => {
+      type: 'file',
+      success(res) {
+        // 
+        const { path, name } = res.tempFiles[0];
         wx.showLoading({
           title: '加载中',
         })
         const random = Math.floor(Math.random() * 1000);
         wx.cloud.uploadFile({
-          cloudPath: `print/${random}.png`,
-          filePath: res.tempFilePaths[0],
+          cloudPath: `print/${random}${name}`,
+          filePath: path,
           success: (res) => {
             let fileID = res.fileID;
             this.setData({
               printImg: fileID,
             })
             wx.hideLoading();
+          },
+          fail: (err) => {
+            console.log(err);
           }
         })
       }
     })
+
+    // 实现图片上传的函数
+    // wx.chooseImage({
+    //   count: 1,
+    //   sizeType: ['compressed', 'original'],
+    //   sourceType: ['album', 'camera'],
+    //   success: (res) => {
+    //     wx.showLoading({
+    //       title: '加载中',
+    //     })
+    //     const random = Math.floor(Math.random() * 1000);
+    //     wx.cloud.uploadFile({
+    //       cloudPath: `print/${random}.png`,
+    //       filePath: res.tempFilePaths[0],
+    //       success: (res) => {
+    //         let fileID = res.fileID;
+    //         this.setData({
+    //           printImg: fileID,
+    //         })
+    //         wx.hideLoading();
+    //       }
+    //     })
+    //   }
+    // })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
+  onLoad: function (options) {
     const address = wx.getStorageSync('addressNow');
     const userInfo = wx.getStorageSync('userInfo');
 
@@ -141,49 +173,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {
+  onShareAppMessage: function () {
 
   }
 })

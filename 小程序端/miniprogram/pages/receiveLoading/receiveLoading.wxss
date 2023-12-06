@@ -1,4 +1,3 @@
-/* pages/receiveLoading/receiveLoading.wxss */
 page {
   background-color: #fff;
 }

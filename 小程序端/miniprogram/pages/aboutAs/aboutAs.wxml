@@ -16,6 +16,7 @@
 
 <view class="cell">
     微信公众号: 小蓝鱼敲code
+    <image src="../../images/qrcode.jpg"></image>
 </view>
 
 <view class="cell">

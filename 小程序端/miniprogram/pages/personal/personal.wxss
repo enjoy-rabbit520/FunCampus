@@ -1,6 +1,6 @@
 .info {
   width: 80%;
-  background-color: #1067D1;
+  background-color: #10cbd1;
   display: flex;
   border-radius: 10rpx;
   margin: 0 auto;
@@ -63,7 +63,7 @@
 }
 
 .customerService .tips {
-  background-color: #1067D1;
+  background-color: #77d110;
   width: 80%;
   padding: 20rpx 40rpx;
   color: #fff;

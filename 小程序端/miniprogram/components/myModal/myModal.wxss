@@ -1,4 +1,3 @@
-/* components/myModal/myModal.wxss */
 .modal {
   background-color: #fff;
   box-shadow: 0 0 5rpx 5rpx #d1d1d1;

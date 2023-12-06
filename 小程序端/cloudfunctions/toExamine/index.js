@@ -1,19 +1,22 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
+
 cloud.init({
   env: 'hjy-exam-4gz65vhhfec7daea',
   traceUser: true,
 })
+
 const db = cloud.database();
 
-// 云函数入口函数：更新订单状态
+
+// 云函数入口函数：审核接单请求
 exports.main = async (event, context) => {
-  const { _id, receivePerson, state } = event;
+  const { _id, state, examinePerson } = event;
   try {
-    return await db.collection('order').doc(_id).update({
+    return await db.collection('orderReceive').doc(_id).update({
       data: {
-        receivePerson,
-        state
+        state,
+        examinePerson
       }
     }) 
   } catch (error) {

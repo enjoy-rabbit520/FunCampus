@@ -1,4 +1,3 @@
-/* pages/expressBusiness/expressBusiness.wxss */
 .scroll_view {
   background-color: #fff;
   white-space: nowrap;

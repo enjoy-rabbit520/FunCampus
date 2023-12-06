@@ -1,4 +1,3 @@
-<!--pages/print/print.wxml-->
 <view class="body">
   <view class="item">
     <text>打印原件</text>

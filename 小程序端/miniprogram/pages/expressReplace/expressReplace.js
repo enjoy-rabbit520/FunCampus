@@ -10,48 +10,40 @@ Page({
     helpContent: '',
     imgUrl: '',
     address: '',
+    userInfo: {},
     business: '',
     remark: '',
     addMoney: null,
-    userInfo: {},
   },
 
   submit() {
-    const {
-      helpContent,
-      imgUrl,
-      address,
-      userInfo,
-      business,
-      remark,
-      addMoney
-    } = this.data;
-    if (!(helpContent || imgUrl) || !address || !business ){
+    const { helpContent, imgUrl, address, userInfo, business, remark, addMoney } = this.data;
+    if (!(helpContent || imgUrl) || !address || !business) {
       wx.showToast({
         icon: 'none',
-        title: '你填写的信息不全，无法发布',
+        title: '您填写的信息不全',
       })
       return;
     }
     db.collection('order').add({
       data: {
-        //订单类型
+        // 模块的名字
         name: '快递代寄',
-        // 发布时间
+        // 当前时间
         time: getTimeNow(),
-        // 订单报酬
+        // 订单金额
         money: 10 + addMoney,
-        // 订单状态：待帮助  已完成
+        // 订单状态
         state: '待帮助',
         // 收件地址
         address,
         // 订单信息
         info: {
-          // 订单内容
+          // 帮助内容
           helpContent,
           // 快递商家
           business,
-          // 订单备注
+          // 备注
           remark,
         },
         // 用户信息
@@ -65,9 +57,15 @@ Page({
           url: '../index/index',
         })
         wx.showToast({
-          title: '发布成功，请耐心等待接单',
+          title: '发布成功',
         })
       }
+    })
+  },
+
+  getAddMoney(e) {
+    this.setData({
+      addMoney: Number(e.detail.value)
     })
   },
 
@@ -121,21 +119,18 @@ Page({
     })
   },
 
-  getAddMoney(e) {
-    this.setData({
-      addMoney: Number(e.detail.value)
-    })
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
+  onLoad: function (options) {
     const { business } = options;
     const address = wx.getStorageSync('addressNow');
     const userInfo = wx.getStorageSync('userInfo');
     if (address) {
-      const {build, houseNumber} = address;
+      const {
+        build,
+        houseNumber
+      } = address;
       this.setData({
         address: `${build}-${houseNumber}`,
       })
@@ -153,49 +148,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {
+  onShareAppMessage: function () {
 
   }
 })

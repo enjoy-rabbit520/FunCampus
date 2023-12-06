@@ -47,7 +47,6 @@ Page({
   },
 
 
-  //发布需求
   submit() {
     // 保存this指向
     const that = this.data;
@@ -102,7 +101,7 @@ Page({
           url: '../index/index',
         })
         wx.showToast({
-          title: '发布成功，请耐心等待接单',
+          title: '发布成功',
         })
       }
     })

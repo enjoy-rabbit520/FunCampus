@@ -66,7 +66,6 @@ Page({
 
   },
 
-  // 拨打电话
   callPhone(e) {
     const {
       phone
@@ -76,7 +75,7 @@ Page({
     })
   },
 
-  // 获取我的接单信息 
+  // 获取我帮助的订单信息 
   getMyHelpOrder() {
     wx.showLoading({
       title: '加载中',
@@ -101,7 +100,7 @@ Page({
 
   },
 
-  // 我的接单单数总和
+  // 我帮助的订单单数总和
   getHelpTotalNum() {
     db.collection('order').where({
       receivePerson: wx.getStorageSync('openid'),
@@ -116,7 +115,7 @@ Page({
     })
   },
 
-  // 我的接单金额总和
+  // 我帮助的订单金额总和
   getHelpTotalMoney() {
     const $ = db.command.aggregate;
     db.collection('order').aggregate().match({
@@ -127,7 +126,7 @@ Page({
       totalNum: $.sum('$money'),
     }).end({
       success: (res) => {
-        console.log(res);
+        //console.log(res);
         this.setData({
           helpTotalMoeny: res.list[0].totalNum
         })
@@ -208,13 +207,21 @@ Page({
         _id,
         _openid
       } = item;
-      if(_openid === wx.getStorageSync('openid')) {
+      const userInfo = wx.getStorageSync('userInfo');
+        if (!userInfo) {
+            wx.showToast({
+                icon: 'none',
+                title: '客官，请先登录，申请成为接单员即可接单哦！',
+            })
+            return;
+        }
+      if (_openid === wx.getStorageSync('openid')) {
         wx.showToast({
           icon: 'none',
-          title: '无法接单',
+          title: '客官，不可以，不能接自己的订单哦',
         });
         return;
-      } 
+      }
       wx.cloud.callFunction({
         name: 'updateReceive',
         data: {
@@ -406,7 +413,6 @@ Page({
           }
           item.info = this.formatInfo(item);
           item.stateColor = this.formatState(item.state);
-          console.log(item.stateColor);
         });
         this.setData({
           orderList: data,

@@ -1,11 +1,15 @@
 .scroll_view {
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   white-space: nowrap;
 }
 
 .tab {
   display: flex;
   text-align: center;
+}
+
+.body{
+  background-color: aqua;
 }
 
 .tab .tab_item {
@@ -18,13 +22,13 @@
 }
 
 .select {
-  color: #1067D1;
+  color: #d110c7;
   border-bottom: 4rpx solid #1067D1;
 }
 
 .body .tips {
   width: 100%;
-  background-color: #5a9ae7;
+  background: radial-gradient(169px at -2.9% 12.9%, rgb(247, 234, 163) 0%, rgba(236, 180, 238, 0.56) 46.4%, rgb(163, 203, 247) 100.7%);
   text-align: center;
   color: #fff;
   padding: 10rpx 0;

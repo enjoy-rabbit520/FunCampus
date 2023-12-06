@@ -18,6 +18,14 @@ Page({
     },
 
     orderReceiver() {
+        const userInfo = wx.getStorageSync('userInfo');
+        if (!userInfo) {
+            wx.showToast({
+                icon: 'none',
+                title: '请先登录!',
+            })
+            return;
+        }
         wx.navigateTo({
             url: '../orderReceiver/orderReceiver',
         })

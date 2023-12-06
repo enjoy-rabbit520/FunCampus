@@ -1,4 +1,3 @@
-<!--pages/run/run.wxml-->
 <view class="body">
     <view class="help_content">
         <text>帮助内容: </text>
@@ -30,4 +29,3 @@
 </view>
 
 <view class="notice">用户条款&隐私策略</view>
-
