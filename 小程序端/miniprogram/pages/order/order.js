@@ -66,6 +66,7 @@ Page({
 
   },
 
+  // 拨打电话
   callPhone(e) {
     const {
       phone
@@ -390,6 +391,57 @@ Page({
     })
   },
 
+  showCodeImg(e) {
+    const {
+      item: {
+        codeImg,
+        state,
+        receivePerson
+      }
+    } = e.currentTarget.dataset;
+    console.log(codeImg, state, receivePerson);
+    if (state !== '已帮助' || receivePerson !== this.data.openid) {
+      wx.showToast({
+        icon: 'none',
+        title: '无权查看!',
+      })
+      return;
+    }
+    wx.previewImage({
+      urls: [codeImg],
+    })
+  },
+
+
+  downloadFile() {
+    const { item: {printImg} } = e.currentTarget.dataset;
+    wx.showLoading({
+      title: '客官呀，正在努力下载哦',
+    })
+    // 调用云函数，完成文件下载
+    wx.cloud.downloadFile({
+      fileID: printImg, // 文件 ID
+      success: res => {
+        // 返回临时文件路径
+        console.log(res.tempFilePath);
+        // 获取FIleSystem
+        const fileManager = wx.getFileSystemManager();
+        // 保存文件到本地
+        fileManager.saveFile({
+          tempFilePath: res.tempFilePath,
+          success: (res) => {
+            console.log(res, '下载完成');
+            wx.hideLoading();
+            wx.openDocument({
+              filePath: 'res.savedFilePath',
+              showMenu: true,
+            })
+          }
+        })
+      },
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -411,6 +463,9 @@ Page({
           if (item.name === "快递代取" && item.info.codeImg) {
             item.codeImg = item.info.codeImg;
           }
+          if (item.name === '打印服务') {
+            item.printImg = item.info.printImg;
+          }
           item.info = this.formatInfo(item);
           item.stateColor = this.formatState(item.state);
         });
@@ -430,26 +485,6 @@ Page({
     })
   },
 
-  showCodeImg(e) {
-    const {
-      item: {
-        codeImg,
-        state,
-        receivePerson
-      }
-    } = e.currentTarget.dataset;
-    console.log(codeImg, state, receivePerson);
-    if (state !== '已帮助' || receivePerson !== this.data.openid) {
-      wx.showToast({
-        icon: 'none',
-        title: '无权查看!',
-      })
-      return;
-    }
-    wx.previewImage({
-      urls: [codeImg],
-    })
-  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -39,7 +39,9 @@
             </view>
         </view>
         <view class="order_bottom">
+            <button wx:if="{{ item.name === '打印服务' && openid === item.receivePerson }}" size="mini" type="primary" bindtap="downloadFile" data-item="{{ item }}">下载文件</button>
             <button wx:if="{{ item.codeImg }}" size="mini" type="primary" bindtap="showCodeImg" data-item="{{ item }}">查看取件码截图</button>
+            
             <view class="money">
                 金额 ￥{{ item.money }}
             </view>
