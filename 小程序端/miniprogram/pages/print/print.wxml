@@ -1,9 +1,13 @@
 <view class="body">
   <view class="item">
     <text>打印原件</text>
-    <view class="addImage" bindtap="getImg">
-      <text wx:if="{{ !printImg }}">+</text>
-      <image wx:else src="{{ printImg }}"></image>
+    <view class="addImage" bindtap="getImg" wx:if="{{ !printImg }}">
+      <text>+</text>
+    </view>
+    <view class="uploadFile" wx:else>
+      <text>上传成功</text>
+      <button size="mini" type="primary" bindtap="preview">预览</button>
+      <button size="mini" type="warn" bindtap="getImg">重传</button>
     </view>
   </view>
   <view class="item">

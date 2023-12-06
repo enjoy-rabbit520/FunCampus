@@ -85,3 +85,12 @@ page {
   text-align: center;
   margin-bottom: 50rpx;
 }
+
+.uploadFile {
+  display: flex;
+  align-items: center;
+}
+.uploadFile text {
+  font-weight: bold;
+  margin-right: 20rpx;
+}

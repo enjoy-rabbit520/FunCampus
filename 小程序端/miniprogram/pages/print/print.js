@@ -14,6 +14,8 @@ Page({
     remark: '',
     colorPrint: false,
     twoSided: false,
+    // 文件路径
+    path: '',
   },
 
   getTwoSided(e) {
@@ -103,9 +105,12 @@ Page({
     wx.chooseMessageFile({
       count: 1,
       type: 'file',
-      success(res) {
+      success: (res) => {
         // 
         const { path, name } = res.tempFiles[0];
+        this.setData({
+          path,
+        })
         wx.showLoading({
           title: '加载中',
         })
@@ -126,30 +131,16 @@ Page({
         })
       }
     })
+  },
 
-    // 实现图片上传的函数
-    // wx.chooseImage({
-    //   count: 1,
-    //   sizeType: ['compressed', 'original'],
-    //   sourceType: ['album', 'camera'],
-    //   success: (res) => {
-    //     wx.showLoading({
-    //       title: '加载中',
-    //     })
-    //     const random = Math.floor(Math.random() * 1000);
-    //     wx.cloud.uploadFile({
-    //       cloudPath: `print/${random}.png`,
-    //       filePath: res.tempFilePaths[0],
-    //       success: (res) => {
-    //         let fileID = res.fileID;
-    //         this.setData({
-    //           printImg: fileID,
-    //         })
-    //         wx.hideLoading();
-    //       }
-    //     })
-    //   }
-    // })
+  preview() {
+    wx.openDocument({
+      filePath: this.data.path,
+      success: function (res) {
+        console.log('文档打开成功')
+      }
+    })
+
   },
 
   /**
